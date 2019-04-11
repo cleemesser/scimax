@@ -1,7 +1,10 @@
-#+TITLE: scimax - Awesome editing for scientists and engineers
+#+TITLE: scimax simplified - Awesome editing for scientists and engineers
 #+AUTHOR: John Kitchin
 
 Scimax is an Emacs starterkit for scientists and engineers. It provides a comprehensive configuration of Emacs for scientific programming and publishing.
+
+This is my fork of scimax which is simplified compared to John K's version because I want to stick as much as possible to the key patterns that I have used for the last 30 years which are part of default emacs - like dired and tab completion, but love the things that John has added to make org mode and programming better.
+
 
 See the [[./scimax.org][manual]] for more details.
 
