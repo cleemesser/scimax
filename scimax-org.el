@@ -1509,7 +1509,7 @@ Use a prefix arg to get regular RET. "
 		       (define-key map (kbd "<return>") 'newline)
 		       (define-key map (kbd "C-c C-c") 'org-ctrl-c-ctrl-c)
 		       map))
-	("emacs-lisp" . ,(let ((map (make-composed-keymap `(,lispy-mode-map
+	("emacs-lisp" . ,(let ((map (make-composed-keymap `(; ,lispy-mode-map
 							    ,emacs-lisp-mode-map
 							    ,outline-minor-mode-map)
 							  org-mode-map)))
