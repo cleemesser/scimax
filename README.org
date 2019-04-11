@@ -1,10 +1,13 @@
 #+TITLE: scimax simplified - Awesome editing for scientists and engineers
-#+AUTHOR: John Kitchin
+#+AUTHOR: John Kitchin, made worse by Chris Lee-Messer
 
-Scimax is an Emacs starterkit for scientists and engineers. It provides a comprehensive configuration of Emacs for scientific programming and publishing.
+Scimax is an Emacs starterkit for scientists and engineers. It provides a comprehensive configuration of Emacs for scientific programming and publishing. 
 
-This is my fork of scimax which is simplified compared to John K's version because I want to stick as much as possible to the key patterns that I have used for the last 30 years which are part of default emacs - like dired and tab completion, but love the things that John has added to make org mode and programming better.
+Unfortunately for me, I've alread used emacs for 30 years and I can't easily change my use of dired, tab completion, etc. from the way I've been doing it, even if scimax's default way is superior.
 
+_This is my fork of scimax_ which is simplified compared to John K's version because I want to stick as much as possible to the key patterns that I have used for the last 30 years which are part of default emacs - like dired and tab completion, but love the things that John has added to make org mode and programming better.
+
+So far, I've basically be disabling things. My emacs-fu is not strong so don't use my hacks as a model for how to do things in emacs lisp. -CLM
 
 See the [[./scimax.org][manual]] for more details.
 
