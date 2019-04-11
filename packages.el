@@ -86,84 +86,84 @@
 
 (use-package drag-stuff)
 
-(use-package swiper
-  :bind
-  ("C-s" . counsel-grep-or-swiper)
-  ("H-s" . swiper-all)
-  :diminish ivy-mode
-  :config
-  (ivy-mode))
+;; (use-package swiper
+;;   :bind
+;;   ("C-s" . counsel-grep-or-swiper)
+;;   ("H-s" . swiper-all)
+;;   :diminish ivy-mode
+;;   :config
+;;   (ivy-mode))
 
-(use-package counsel
-  :init
-  (require 'ivy)
-  (setq projectile-completion-system 'ivy)
-  (setq ivy-use-virtual-buffers t)
-  (define-prefix-command 'counsel-prefix-map)
-  (global-set-key (kbd "H-c") 'counsel-prefix-map)
+;; (use-package counsel
+;;   :init
+;;   (require 'ivy)
+;;   (setq projectile-completion-system 'ivy)
+;;   (setq ivy-use-virtual-buffers t)
+;;   (define-prefix-command 'counsel-prefix-map)
+;;   (global-set-key (kbd "H-c") 'counsel-prefix-map)
 
-  ;; default pattern ignores order.
-  (setf (cdr (assoc t ivy-re-builders-alist))
-	'ivy--regex-ignore-order)
-  :bind
-  (("M-x" . counsel-M-x)
-   ("C-x b" . ivy-switch-buffer)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x l" . counsel-locate)
-   ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable)
-   ("C-h i" . counsel-info-lookup-symbol)
-   ("H-c r" . ivy-resume)
-   ("H-c l" . counsel-load-library)
-   ("H-c f" . counsel-git)
-   ("H-c g" . counsel-git-grep)
-   ("H-c a" . counsel-ag)
-   ("H-c p" . counsel-pt))
-  :diminish ""
-  :config
-  (progn
-    (counsel-mode)
-    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-    (define-key ivy-minibuffer-map (kbd "M-<SPC>") 'ivy-dispatching-done)
+;;   ;; default pattern ignores order.
+;;   (setf (cdr (assoc t ivy-re-builders-alist))
+;; 	'ivy--regex-ignore-order)
+;;   :bind
+;;   (("M-x" . counsel-M-x)
+;;    ("C-x b" . ivy-switch-buffer)
+;;    ("C-x C-f" . counsel-find-file)
+;;    ("C-x l" . counsel-locate)
+;;    ("C-h f" . counsel-describe-function)
+;;    ("C-h v" . counsel-describe-variable)
+;;    ("C-h i" . counsel-info-lookup-symbol)
+;;    ("H-c r" . ivy-resume)
+;;    ("H-c l" . counsel-load-library)
+;;    ("H-c f" . counsel-git)
+;;    ("H-c g" . counsel-git-grep)
+;;    ("H-c a" . counsel-ag)
+;;    ("H-c p" . counsel-pt))
+;;   :diminish ""
+;;   :config
+;;   (progn
+;;     (counsel-mode)
+;;     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+;;     (define-key ivy-minibuffer-map (kbd "M-<SPC>") 'ivy-dispatching-done)
 
-    ;; C-RET call and go to next
-    (define-key ivy-minibuffer-map (kbd "C-<return>")
-      (lambda ()
-	"Apply action and move to next/previous candidate."
-	(interactive)
-	(ivy-call)
-	(ivy-next-line)))
+;;     ;; C-RET call and go to next
+;;     (define-key ivy-minibuffer-map (kbd "C-<return>")
+;;       (lambda ()
+;; 	"Apply action and move to next/previous candidate."
+;; 	(interactive)
+;; 	(ivy-call)
+;; 	(ivy-next-line)))
 
-    ;; M-RET calls action on all candidates to end.
-    (define-key ivy-minibuffer-map (kbd "M-<return>")
-      (lambda ()
-	"Apply default action to all candidates."
-	(interactive)
-	(ivy-beginning-of-buffer)
-	(loop for i from 0 to (- ivy--length 1)
-	      do
-	      (ivy-call)
-	      (ivy-next-line)
-	      (ivy--exhibit))
-	(exit-minibuffer)))
+;;     ;; M-RET calls action on all candidates to end.
+;;     (define-key ivy-minibuffer-map (kbd "M-<return>")
+;;       (lambda ()
+;; 	"Apply default action to all candidates."
+;; 	(interactive)
+;; 	(ivy-beginning-of-buffer)
+;; 	(loop for i from 0 to (- ivy--length 1)
+;; 	      do
+;; 	      (ivy-call)
+;; 	      (ivy-next-line)
+;; 	      (ivy--exhibit))
+;; 	(exit-minibuffer)))
 
-    ;; s-RET to quit
-    (define-key ivy-minibuffer-map (kbd "s-<return>")
-      (lambda ()
-	"Exit with no action."
-	(interactive)
-	(ivy-exit-with-action
-	 (lambda (x) nil))))
+;;     ;; s-RET to quit
+;;     (define-key ivy-minibuffer-map (kbd "s-<return>")
+;;       (lambda ()
+;; 	"Exit with no action."
+;; 	(interactive)
+;; 	(ivy-exit-with-action
+;; 	 (lambda (x) nil))))
 
-    ;; Show keys
-    (define-key ivy-minibuffer-map (kbd "?")
-      (lambda ()
-	(interactive)
-	(describe-keymap ivy-minibuffer-map)))
+;;     ;; Show keys
+;;     (define-key ivy-minibuffer-map (kbd "?")
+;;       (lambda ()
+;; 	(interactive)
+;; 	(describe-keymap ivy-minibuffer-map)))
 
-    (define-key ivy-minibuffer-map (kbd "<left>") 'ivy-backward-delete-char)
-    (define-key ivy-minibuffer-map (kbd "<right>") 'ivy-alt-done)
-    (define-key ivy-minibuffer-map (kbd "C-d") 'ivy-backward-delete-char)))
+;;     (define-key ivy-minibuffer-map (kbd "<left>") 'ivy-backward-delete-char)
+;;     (define-key ivy-minibuffer-map (kbd "<right>") 'ivy-alt-done)
+;;     (define-key ivy-minibuffer-map (kbd "C-d") 'ivy-backward-delete-char)))
 
 ;; Provides functions for working on lists
 (use-package dash)
@@ -185,83 +185,83 @@
 
 ;; https://github.com/amperser/proselint
 ;; pip install proselint
-(use-package flycheck
-  ;; Jun 28 - I like this idea, but sometimes this is too slow.
-  :config
-  (add-hook 'text-mode-hook #'flycheck-mode)
-  (add-hook 'org-mode-hook #'flycheck-mode)
-  (define-key flycheck-mode-map (kbd "s-;") 'flycheck-previous-error))
+;; (use-package flycheck
+;;   ;; Jun 28 - I like this idea, but sometimes this is too slow.
+;;   :config
+;;   (add-hook 'text-mode-hook #'flycheck-mode)
+;;   (add-hook 'org-mode-hook #'flycheck-mode)
+;;   (define-key flycheck-mode-map (kbd "s-;") 'flycheck-previous-error))
 
 
 ;; https://manuel-uberti.github.io/emacs/2016/06/06/spellchecksetup/
-(use-package flyspell-correct-ivy
-  :ensure t
-  :init
-  (if (file-directory-p (expand-file-name "emacs-win" scimax-dir))
-      (progn
-	;; spell-checking on windows
-	(setq ispell-program-name
-	      (expand-file-name
-	       "emacs-win/bin/hunspell"
-	       scimax-dir))
+;; (use-package flyspell-correct-ivy
+;;   :ensure t
+;;   :init
+;;   (if (file-directory-p (expand-file-name "emacs-win" scimax-dir))
+;;       (progn
+;; 	;; spell-checking on windows
+;; 	(setq ispell-program-name
+;; 	      (expand-file-name
+;; 	       "emacs-win/bin/hunspell"
+;; 	       scimax-dir))
 
-	(setq ispell-dictionary "english")
+;; 	(setq ispell-dictionary "english")
 
-	(setq ispell-local-dictionary-alist
-	      `(("english"
-		 "[[:alpha:]]"
-		 "[^[:alpha:]]"
-		 "[']"
-		 t
-		 ("-d" "en_US" "-p" ,(expand-file-name
-				      "emacs-win/share/hunspell/en_US"
-				      scimax-dir))
-		 nil
-		 utf-8))))
-    (setenv "DICPATH" (expand-file-name "~/Library/Spelling"))
-    (setq ispell-program-name (executable-find "hunspell")
-	  ispell-dictionary "en_US"
-	  ispell-local-dictionary "en_US"
-	  ispell-local-dictionary-alist
-	  `(("english"
-	     "[[:alpha:]]"
-	     "[^[:alpha:]]"
-	     "[']"
-	     t
-	     ("-d" "en_US" "-p" ,(expand-file-name "~/Library/Spelling/"))
-	     nil
-	     utf-8)
-	    ("en_US"
-	     "[[:alpha:]]"
-	     "[^[:alpha:]]"
-	     "[']"
-	     t
-	     ("-d" "en_US" "-p" ,(expand-file-name "~/Library/Spelling/"))
-	     nil
-	     utf-8))
-	  flyspell-correct-interface 'flyspell-correct-ivy))
-  (add-hook 'flyspell-incorrect-hook
-	    (lambda (beg end sym)
-	      (message "%s misspelled. Type %s to fix it."
-		       (buffer-substring beg end)
-		       (substitute-command-keys
-			"\\[flyspell-correct-previous-word-generic]"))
-	      ;; return nil so word is still highlighted.
-	      nil))
-  (add-hook 'text-mode-hook
-	    (lambda ()
-	      (flyspell-mode)
-	      (flycheck-mode)))
+;; 	(setq ispell-local-dictionary-alist
+;; 	      `(("english"
+;; 		 "[[:alpha:]]"
+;; 		 "[^[:alpha:]]"
+;; 		 "[']"
+;; 		 t
+;; 		 ("-d" "en_US" "-p" ,(expand-file-name
+;; 				      "emacs-win/share/hunspell/en_US"
+;; 				      scimax-dir))
+;; 		 nil
+;; 		 utf-8))))
+;;     (setenv "DICPATH" (expand-file-name "~/Library/Spelling"))
+;;     (setq ispell-program-name (executable-find "hunspell")
+;; 	  ispell-dictionary "en_US"
+;; 	  ispell-local-dictionary "en_US"
+;; 	  ispell-local-dictionary-alist
+;; 	  `(("english"
+;; 	     "[[:alpha:]]"
+;; 	     "[^[:alpha:]]"
+;; 	     "[']"
+;; 	     t
+;; 	     ("-d" "en_US" "-p" ,(expand-file-name "~/Library/Spelling/"))
+;; 	     nil
+;; 	     utf-8)
+;; 	    ("en_US"
+;; 	     "[[:alpha:]]"
+;; 	     "[^[:alpha:]]"
+;; 	     "[']"
+;; 	     t
+;; 	     ("-d" "en_US" "-p" ,(expand-file-name "~/Library/Spelling/"))
+;; 	     nil
+;; 	     utf-8))
+;; 	  flyspell-correct-interface 'flyspell-correct-ivy))
+;;   (add-hook 'flyspell-incorrect-hook
+;; 	    (lambda (beg end sym)
+;; 	      (message "%s misspelled. Type %s to fix it."
+;; 		       (buffer-substring beg end)
+;; 		       (substitute-command-keys
+;; 			"\\[flyspell-correct-previous-word-generic]"))
+;; 	      ;; return nil so word is still highlighted.
+;; 	      nil))
+;;   (add-hook 'text-mode-hook
+;; 	    (lambda ()
+;; 	      (flyspell-mode)
+;; 	      (flycheck-mode)))
 
-  (add-hook 'org-mode-hook
-	    (lambda ()
-	      (flyspell-mode +1)
-	      (flycheck-mode +1)))
+;;   (add-hook 'org-mode-hook
+;; 	    (lambda ()
+;; 	      (flyspell-mode +1)
+;; 	      (flycheck-mode +1)))
 
-  :after flyspell
-  :config
-  (progn
-    (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic)))
+;;   :after flyspell
+;;   :config
+;;   (progn
+;;     (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic)))
 
 
 (use-package flx)
@@ -339,14 +339,14 @@
 (use-package jedi-direx)
 
 ;; Superior lisp editing
-(use-package lispy
-  :config
-  (dolist (hook '(emacs-lisp-mode-hook
-		  hy-mode-hook))
-    (add-hook hook
-	      (lambda ()
-		(lispy-mode)
-		(eldoc-mode)))))
+;; (use-package lispy
+;;   :config
+;;   (dolist (hook '(emacs-lisp-mode-hook
+;; 		  hy-mode-hook))
+;;     (add-hook hook
+;; 	      (lambda ()
+;; 		(lispy-mode)
+;; 		(eldoc-mode)))))
 
 (use-package magit
   :init (setq magit-completing-read-function 'ivy-completing-read)
@@ -465,9 +465,9 @@
 ;; keep recent commands available in M-x
 (use-package smex)
 
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :config (global-undo-tree-mode))
+;; (use-package undo-tree
+;;   :diminish undo-tree-mode
+;;   :config (global-undo-tree-mode))
 
 ;; Note ws-butler-global-mode causes some issue with org-ref ref links. If you
 ;; are right after one you cannot add a space without getting a new line.
