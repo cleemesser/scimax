@@ -1,4 +1,4 @@
-#+TITLE: scimax simplified - Awesome editing for scientists and engineers
+#+TITLE: scimax simplified - Awesome editing for scientists and engineers dumbed down a little for me
 #+AUTHOR: John Kitchin, made worse by Chris Lee-Messer
 
 Scimax is an Emacs starterkit for scientists and engineers. It provides a comprehensive configuration of Emacs for scientific programming and publishing. 
